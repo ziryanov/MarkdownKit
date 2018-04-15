@@ -10,9 +10,11 @@ import UIKit
 extension UIFont {
 
   func withTraits(_ traits: UIFontDescriptorSymbolicTraits...) -> UIFont {
-    let descriptor = fontDescriptor
-      .withSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))
-    return UIFont(descriptor: descriptor!, size: 0)
+    if let descriptor = fontDescriptor
+        .withSymbolicTraits(UIFontDescriptorSymbolicTraits(traits)) {
+        return UIFont(descriptor: descriptor, size: 0)
+    }
+    return self
   }
 
   func bold() -> UIFont {
